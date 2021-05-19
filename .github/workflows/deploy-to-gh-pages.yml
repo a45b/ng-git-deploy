@@ -22,14 +22,15 @@ jobs:
           ref: gh-pages
 
       - name: List files in the repository
+        uses: actions/checkout@v2
         run: |
           ls ${{ github.workspace }}
           git rebase main
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "${{ env.NODE }}"
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: "${{ env.NODE }}"
       # - name: Deploy to gh-pages
       #   uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
       #   with:
