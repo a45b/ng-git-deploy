@@ -18,11 +18,9 @@ jobs:
       
       - name: repository checkout and pull
         uses: actions/checkout@v2
-          with:
-            ref: gh-pages
-
-      - name: List files in the repository
-        run: |
+        with:
+          ref: gh-pages
+      - run: |
           ls ${{ github.workspace }}
           git rebase main
 
@@ -31,12 +29,12 @@ jobs:
         with:
           node-version: "${{ env.NODE }}"
 
-      # - name: Deploy to gh-pages 
-      #   uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
-      #   with:
-      #     github_access_token: ${{ secrets.GITHUB_TOKEN }} # see the Configuration section for how you can create secrets
-      #     build_configuration: production # The build environment for the app. please look configurations in your angular.json
-      #     base_href: /ng-git-deploy/   # make sure this corresponds to https://<your_username>.github.io/<base_href>/
-      #     deploy_branch: gh-pages # The branch the action should deploy to.
-      #     angular_dist_build_folder: dist/ng-git-deploy # The folder where your project is supposed to be after running ng build by the action.
+      - name: Deploy to gh-pages 
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }} # see the Configuration section for how you can create secrets
+          build_configuration: production # The build environment for the app. please look configurations in your angular.json
+          base_href: /ng-git-deploy/   # make sure this corresponds to https://<your_username>.github.io/<base_href>/
+          deploy_branch: gh-pages # The branch the action should deploy to.
+          angular_dist_build_folder: dist/ng-git-deploy # The folder where your project is supposed to be after running ng build by the action.
 
