@@ -18,11 +18,9 @@ jobs:
 
       - name: repository checkout and pull
         uses: actions/checkout@v2
-        with:
-          ref: gh-pages
         run: |
           ls ${{ github.workspace }}
-          git rebase main
+          git checkout main
 
       # - name: Set up Node.js
       #   uses: actions/setup-node@v2
